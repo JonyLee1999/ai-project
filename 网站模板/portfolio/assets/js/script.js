@@ -67,7 +67,7 @@ select.addEventListener("click", function () { elementToggleFunc(this); });
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
 
-    let selectedValue = this.innerText.toLowerCase();
+    let selectedValue = this.innerText;  // 保持原始文本，不转换为小写
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
@@ -79,12 +79,22 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
+  // 映射中文筛选条件到英文data-category值
+  const filterMap = {
+    "全部": "all",
+    "网站设计": "web design", 
+    "应用开发": "applications",
+    "网站开发": "web development"
+  };
+  
+  // 如果是中文，转换为对应的英文值
+  const mappedValue = filterMap[selectedValue] || selectedValue;
 
   for (let i = 0; i < filterItems.length; i++) {
 
-    if (selectedValue === "all") {
+    if (mappedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (mappedValue === filterItems[i].dataset.category) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -101,7 +111,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 
   filterBtn[i].addEventListener("click", function () {
 
-    let selectedValue = this.innerText.toLowerCase();
+    let selectedValue = this.innerText;  // 保持原始文本，不转换为小写
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
