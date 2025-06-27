@@ -1,8 +1,0 @@
-# 重定向根路径到portfolio
-/    /portfolio/index.html    200
-
-# 处理portfolio目录访问
-/portfolio    /portfolio/index.html    200
-
-# 所有其他路径都fallback到portfolio的index.html
-/*    /portfolio/index.html    200 
