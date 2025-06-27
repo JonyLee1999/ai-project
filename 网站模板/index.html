@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jony - 正在进入个人网站</title>
+    <meta name="description" content="Jony的个人博客 - 专注AI产品设计与用户体验">
+    
+    <!-- 立即重定向 -->
+    <script>
+        window.location.replace('./portfolio/');
+    </script>
+    
+    <!-- 如果JS被禁用，使用meta refresh -->
+    <meta http-equiv="refresh" content="0; url=./portfolio/">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .loading-container {
+            max-width: 400px;
+            padding: 40px 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .manual-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .manual-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .loading-dots {
+            display: inline-block;
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .loading-container {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="logo">J</div>
+        <div class="spinner"></div>
+        <h1>正在进入个人网站</h1>
+        <p>
+            欢迎来到 Jony 的个人博客<br>
+            专注 AI 产品设计与用户体验<span class="loading-dots"></span>
+        </p>
+        <a href="./portfolio/" class="manual-link">
+            如果没有自动跳转，请点击这里
+        </a>
+    </div>
+    
+    <script>
+        // 确保重定向能够正常工作
+        document.addEventListener('DOMContentLoaded', function() {
+            // 延迟500ms给用户一个看到加载页面的机会
+            setTimeout(function() {
+                window.location.href = './portfolio/';
+            }, 500);
+        });
+        
+        // 更新加载点动画
+        let dots = 0;
+        setInterval(function() {
+            const dotsElement = document.querySelector('.loading-dots');
+            if (dotsElement) {
+                dots = (dots + 1) % 4;
+                dotsElement.textContent = '.'.repeat(dots);
+            }
+        }, 500);
+    </script>
+</body>
+</html> 
